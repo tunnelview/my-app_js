@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Display } from "./Display";
 import { Form } from "./Form";
 
-export const App = () => {
+const App = () => {
+  const [studentsList, setStudentsList] = useState([]);
   const addToTheList = (frmData) => {
-    console.log(frmData);
+    setStudentsList([...studentsList, frmData]);
+    console.log(studentsList);
   };
+
   return (
     <div>
       <Form addToTheList={addToTheList} />
       <hr />
-      <Display />
+      <Display studentsList={studentsList} />
     </div>
   );
 };
